@@ -1,0 +1,44 @@
+﻿@model IEnumerable<PruebaTecnica2025.Models.ViewModels.VentasVM>
+
+@{
+    ViewData["Title"] = "Ventas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="h3 text-center text-primary">Lista de @ViewBag.Title</div>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Codigo Venta</th>
+            <th>Fecha</th>
+            <th>Producto</th>
+            <th>Categoria</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodigoVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreProducto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreCategoria)
+                </td>
+
+                <td>
+
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.CodigoVenta">Detalles</a> 
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
