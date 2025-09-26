@@ -1,1 +1,66 @@
-﻿@model IEnumerable<>
+﻿@model IEnumerable<PruebaTecnica2025.Models.ViewModels.VentasVM>
+@{
+    ViewData["Title"] = "Ventas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="h2 text-center text-primary">Lista de @ViewBag.Title</div>
+
+<p>
+    Seleccione una categoría y un año(por defecto se buscara con 2019) para ver las ventas correspondientes.
+    El menú de categorías solo muestra aquellas que tuvieron ventas en el año seleccionado.
+</p>
+
+<div class="card mt-2 mb-2">
+    <div class="card-body">
+        <form asp-action="Ejercicio" method="get">
+            <div class="row">
+
+                <div class="form-group col-md-5">
+                    <label class="control-label">Categoría:</label>
+                    <select name="CodCategoria" class="form-control" asp-items="ViewBag.ListaCategorias">
+                        <option value="">-- Seleccione una Categoría --</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label">Año:</label>
+                    <input name="anio" type="number" class="form-control" value="@ViewBag.AnioSeleccionado" />
+                </div>
+
+                <div class="form-group col-md-4 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary">Filtrar Ventas</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Categoria</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.NombreProducto
+                        </td>
+                        <td>@item.NombreCategoria</td>
+                        <td>
+                            @item.FechaVenta
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
