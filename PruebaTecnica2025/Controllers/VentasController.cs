@@ -47,7 +47,7 @@ namespace PruebaTecnica2025.Controllers
             ViewBag.AnioSeleccionado = anioFiltro;
 
             var resutlado = await _context.Venta
-                                        .Where(v=>v.CodigoProductoNavigation.CodigoCategoria == CodCategoria)
+                                        .Where(v=>v.CodigoProductoNavigation.CodigoCategoria == CodCategoria && v.Fecha.HasValue && v.Fecha.Value.Year == anio)
                                         .OrderBy(v=>v.Fecha)
                                         .Select(s => new VentasVM
                                         {
