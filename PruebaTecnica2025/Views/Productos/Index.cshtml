@@ -6,22 +6,18 @@
 }
 <div class="h3 text-center text-primary">Lista de @ViewBag.Title</div>
 
-<p>
-    <a class="text-center text-primary" asp-action="Create">Agregar Prodcuto</a>
-</p>
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.CodigoProducto)
+                Codigo Producto
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre)
+                Nombre Producto
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CodigoCategoriaNavigation)
+               Categoria
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -35,12 +31,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CodigoCategoriaNavigation.Nombre)
-            </td>
-
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CodigoProducto">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CodigoProducto">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CodigoProducto">Delete</a>
             </td>
         </tr>
 }
