@@ -13,6 +13,7 @@ Para la realización de este ejercicio usamos una base de datos en Docker, por l
 docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=PasswordPruebaGD2025" -e "MSSQL_PID=Express" -p 1433:1433 --name sqlserver-dev --restart unless-stopped -v sqlserver_data:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2022-latest
 ```
 # Ejerccicio 1 Base de Datos
+En el repositorio se incluye el archivo "SQL-Creacion-consulta.sql" que contiene tanto la creacion de base de datos, trablas y el llenado del las 3 tablas
 
 ![Imagen que muestra el diagrama de entidad relacion](https://raw.githubusercontent.com/williamgomez686/PruebaTecnica2025/refs/heads/master/PruebaTecnica2025/wwwroot/image/Diagrama_tablas.png)
 ## Consulta realizada para el ejercicio
