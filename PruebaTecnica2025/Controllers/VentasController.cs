@@ -10,7 +10,7 @@ namespace PruebaTecnica2025.Controllers
 {
     public class VentasController : Controller
     {
-        public readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
         public VentasController(ApplicationDbContext context)
         {
                 _context = context;
