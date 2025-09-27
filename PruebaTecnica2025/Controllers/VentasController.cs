@@ -29,7 +29,7 @@ namespace PruebaTecnica2025.Controllers
                                             NombreProducto = s.CodigoProductoNavigation.Nombre,
                                             NombreCategoria = s.CodigoProductoNavigation.CodigoCategoriaNavigation.Nombre
                                         })
-                                        .Take(10)
+                                        .Take(100)
                                         .ToListAsync());
         }
 
@@ -43,12 +43,17 @@ namespace PruebaTecnica2025.Controllers
                 .OrderBy(c => c.Nombre)
                 .ToListAsync();
 
+
             ViewBag.ListaCategorias = new SelectList(categoriasConVentas, "CodigoCategoria", "Nombre");
             ViewBag.AnioSeleccionado = anioFiltro;
 
-            var resutlado = await _context.Venta
-                                        .Where(v=>v.CodigoProductoNavigation.CodigoCategoria == CodCategoria && v.Fecha.HasValue && v.Fecha.Value.Year == anio)
-                                        .OrderBy(v=>v.Fecha)
+            var resultado = new List<VentasVM>();
+
+            if (CodCategoria > 0)
+            {
+                resultado = await _context.Venta
+                                        .Where(v => v.CodigoProductoNavigation.CodigoCategoria == CodCategoria && v.Fecha.HasValue && v.Fecha.Value.Year == anio)
+                                        .OrderBy(v => v.Fecha)
                                         .Select(s => new VentasVM
                                         {
                                             CodigoVenta = s.CodigoVenta,
@@ -57,8 +62,9 @@ namespace PruebaTecnica2025.Controllers
                                             NombreCategoria = s.CodigoProductoNavigation.CodigoCategoriaNavigation.Nombre
                                         })
                                         .ToListAsync();
+            }
 
-            return View (resutlado);    
+            return View (resultado);    
         }
         [HttpGet]
         public async Task<IActionResult> ListaCategorias(int id)
