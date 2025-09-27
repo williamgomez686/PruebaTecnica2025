@@ -59,7 +59,7 @@ namespace PruebaTecnica2025.Controllers
                                             CodigoVenta = s.CodigoVenta,
                                             FechaVenta = s.Fecha,
                                             NombreProducto = s.CodigoProductoNavigation.Nombre,
-                                            NombreCategoria = s.CodigoProductoNavigation.CodigoCategoriaNavigation.Nombre
+                                            //NombreCategoria = s.CodigoProductoNavigation.CodigoCategoriaNavigation.Nombre
                                         })
                                         .ToListAsync();
             }
